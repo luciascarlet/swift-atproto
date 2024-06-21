@@ -8,7 +8,7 @@ let package = Package(
         .macOS(.v13)
     ],
     dependencies: [
-        .package(url: "https://github.com/luciascarlet/lexicon-gen.git", revision: "0.0.7"),
+        .package(url: "https://github.com/luciascarlet/lexicon-gen.git", branch: "main"),
     ],
     targets: [
         .target(name: "Tools", path: "")
