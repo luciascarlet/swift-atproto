@@ -2,6 +2,7 @@ import ATProtoCore
 import ATProtoMacro
 import ATProtoXRPC
 import Foundation
+import AnyCodable
 public enum App {
 }
 public extension App {
@@ -172,48 +173,6 @@ public extension Tools.Ozone {
 }
 public extension Tools.Ozone.Team {
     enum Defs {
-    }
-}
-public typealias LexiconUnknownUnion = Union13<App.Bsky.Actor.Profile, App.Bsky.Feed.Generator, App.Bsky.Feed.Like, App.Bsky.Feed.Post, App.Bsky.Feed.Repost, App.Bsky.Feed.Threadgate, App.Bsky.Graph.Block, App.Bsky.Graph.Follow, App.Bsky.Graph.List, App.Bsky.Graph.Listblock, App.Bsky.Graph.Listitem, App.Bsky.Labeler.Service, Chat.Bsky.Actor.Declaration>
-public extension LexiconUnknownUnion {
-    var asProfile: App.Bsky.Actor.Profile? {
-        asType0
-    }
-    var asGenerator: App.Bsky.Feed.Generator? {
-        asType1
-    }
-    var asLike: App.Bsky.Feed.Like? {
-        asType2
-    }
-    var asPost: App.Bsky.Feed.Post? {
-        asType3
-    }
-    var asRepost: App.Bsky.Feed.Repost? {
-        asType4
-    }
-    var asThreadgate: App.Bsky.Feed.Threadgate? {
-        asType5
-    }
-    var asBlock: App.Bsky.Graph.Block? {
-        asType6
-    }
-    var asFollow: App.Bsky.Graph.Follow? {
-        asType7
-    }
-    var asList: App.Bsky.Graph.List? {
-        asType8
-    }
-    var asListblock: App.Bsky.Graph.Listblock? {
-        asType9
-    }
-    var asListitem: App.Bsky.Graph.Listitem? {
-        asType10
-    }
-    var asService: App.Bsky.Labeler.Service? {
-        asType11
-    }
-    var asDeclaration: Chat.Bsky.Actor.Declaration? {
-        asType12
     }
 }
 public extension App.Bsky.Actor.Defs {
@@ -1187,7 +1146,7 @@ public extension App.Bsky.Embed.Record {
         @Indirect
         public var uri: ATURI
         @Indirect
-        public var value: LexiconUnknownUnion
+        public var value: [String: AnyCodable]
         public init(
             author: App.Bsky.Actor.Defs.ProfileViewBasic,
             cid: String,
@@ -1198,7 +1157,7 @@ public extension App.Bsky.Embed.Record {
             replyCount: Int? = nil,
             repostCount: Int? = nil,
             uri: ATURI,
-            value: LexiconUnknownUnion
+            value: [String: AnyCodable]
         ) {
             self._author = .wrapped(author)
             self._cid = .wrapped(cid)
@@ -1449,7 +1408,7 @@ public extension App.Bsky.Feed.Defs {
         @Indirect
         public var likeCount: Int?
         @Indirect
-        public var record: LexiconUnknownUnion
+        public var record: [String: AnyCodable]
         @Indirect
         public var replyCount: Int?
         @Indirect
@@ -1467,7 +1426,7 @@ public extension App.Bsky.Feed.Defs {
             indexedAt: Date,
             labels: [Com.Atproto.Label.Defs.Label]? = nil,
             likeCount: Int? = nil,
-            record: LexiconUnknownUnion,
+            record: [String: AnyCodable],
             replyCount: Int? = nil,
             repostCount: Int? = nil,
             threadgate: App.Bsky.Feed.Defs.ThreadgateView? = nil,
@@ -1589,13 +1548,13 @@ public extension App.Bsky.Feed.Defs {
         @Indirect
         public var lists: [App.Bsky.Graph.Defs.ListViewBasic]?
         @Indirect
-        public var record: LexiconUnknownUnion?
+        public var record: [String: AnyCodable]?
         @Indirect
         public var uri: ATURI?
         public init(
             cid: String? = nil,
             lists: [App.Bsky.Graph.Defs.ListViewBasic]? = nil,
-            record: LexiconUnknownUnion? = nil,
+            record: [String: AnyCodable]? = nil,
             uri: ATURI? = nil
         ) {
             self._cid = .wrapped(cid)
@@ -3929,7 +3888,7 @@ public extension App.Bsky.Notification.ListNotifications {
         @Indirect
         public var reasonSubject: ATURI?
         @Indirect
-        public var record: LexiconUnknownUnion
+        public var record: [String: AnyCodable]
         @Indirect
         public var uri: ATURI
         public init(
@@ -3940,7 +3899,7 @@ public extension App.Bsky.Notification.ListNotifications {
             labels: [Com.Atproto.Label.Defs.Label]? = nil,
             reason: String,
             reasonSubject: ATURI? = nil,
-            record: LexiconUnknownUnion,
+            record: [String: AnyCodable],
             uri: ATURI
         ) {
             self._author = .wrapped(author)
@@ -5320,7 +5279,7 @@ public extension Com.Atproto.Admin.Defs {
         @Indirect
         public var invitesDisabled: Bool?
         @Indirect
-        public var relatedRecords: [LexiconUnknownUnion]?
+        public var relatedRecords: [[String: AnyCodable]]?
         public init(
             deactivatedAt: Date? = nil,
             did: String,
@@ -5332,7 +5291,7 @@ public extension Com.Atproto.Admin.Defs {
             invitedBy: Com.Atproto.Server.Defs.InviteCode? = nil,
             invites: [Com.Atproto.Server.Defs.InviteCode]? = nil,
             invitesDisabled: Bool? = nil,
-            relatedRecords: [LexiconUnknownUnion]? = nil
+            relatedRecords: [[String: AnyCodable]]? = nil
         ) {
             self._deactivatedAt = .wrapped(deactivatedAt)
             self._did = .wrapped(did)
@@ -5882,14 +5841,14 @@ public extension Com.Atproto.Identity {
             @Indirect
             public var rotationKeys: [String]?
             @Indirect
-            public var services: LexiconUnknownUnion?
+            public var services: [String: AnyCodable]?
             @Indirect
-            public var verificationMethods: LexiconUnknownUnion?
+            public var verificationMethods: [String: AnyCodable]?
             public init(
                 alsoKnownAs: [String]? = nil,
                 rotationKeys: [String]? = nil,
-                services: LexiconUnknownUnion? = nil,
-                verificationMethods: LexiconUnknownUnion? = nil
+                services: [String: AnyCodable]? = nil,
+                verificationMethods: [String: AnyCodable]? = nil
             ) {
                 self._alsoKnownAs = .wrapped(alsoKnownAs)
                 self._rotationKeys = .wrapped(rotationKeys)
@@ -5961,17 +5920,17 @@ public extension Com.Atproto.Identity {
             @Indirect
             public var rotationKeys: [String]?
             @Indirect
-            public var services: LexiconUnknownUnion?
+            public var services: [String: AnyCodable]?
             @Indirect
             public var token: String?
             @Indirect
-            public var verificationMethods: LexiconUnknownUnion?
+            public var verificationMethods: [String: AnyCodable]?
             public init(
                 alsoKnownAs: [String]? = nil,
                 rotationKeys: [String]? = nil,
-                services: LexiconUnknownUnion? = nil,
+                services: [String: AnyCodable]? = nil,
                 token: String? = nil,
-                verificationMethods: LexiconUnknownUnion? = nil
+                verificationMethods: [String: AnyCodable]? = nil
             ) {
                 self._alsoKnownAs = .wrapped(alsoKnownAs)
                 self._rotationKeys = .wrapped(rotationKeys)
@@ -5982,9 +5941,9 @@ public extension Com.Atproto.Identity {
         }
         public struct Output: Decodable, Hashable {
             @Indirect
-            public var operation: LexiconUnknownUnion
+            public var operation: [String: AnyCodable]
             public init(
-                operation: LexiconUnknownUnion
+                operation: [String: AnyCodable]
             ) {
                 self._operation = .wrapped(operation)
             }
@@ -6003,9 +5962,9 @@ public extension Com.Atproto.Identity {
     struct SubmitPlcOperation: XRPCRequest {
         public struct Input: Encodable {
             @Indirect
-            public var operation: LexiconUnknownUnion
+            public var operation: [String: AnyCodable]
             public init(
-                operation: LexiconUnknownUnion
+                operation: [String: AnyCodable]
             ) {
                 self._operation = .wrapped(operation)
             }
@@ -6333,11 +6292,11 @@ public extension Com.Atproto.Repo.ApplyWrites {
         @Indirect
         public var rkey: String?
         @Indirect
-        public var value: LexiconUnknownUnion
+        public var value: [String: AnyCodable]
         public init(
             collection: String,
             rkey: String? = nil,
-            value: LexiconUnknownUnion
+            value: [String: AnyCodable]
         ) {
             self._collection = .wrapped(collection)
             self._rkey = .wrapped(rkey)
@@ -6402,11 +6361,11 @@ public extension Com.Atproto.Repo.ApplyWrites {
         @Indirect
         public var rkey: String
         @Indirect
-        public var value: LexiconUnknownUnion
+        public var value: [String: AnyCodable]
         public init(
             collection: String,
             rkey: String,
-            value: LexiconUnknownUnion
+            value: [String: AnyCodable]
         ) {
             self._collection = .wrapped(collection)
             self._rkey = .wrapped(rkey)
@@ -6421,7 +6380,7 @@ public extension Com.Atproto.Repo {
             @Indirect
             public var collection: String
             @Indirect
-            public var record: LexiconUnknownUnion
+            public var record: [String: AnyCodable]
             @Indirect
             public var repo: String
             @Indirect
@@ -6432,7 +6391,7 @@ public extension Com.Atproto.Repo {
             public var validate: Bool?
             public init(
                 collection: String,
-                record: LexiconUnknownUnion,
+                record: [String: AnyCodable],
                 repo: String,
                 rkey: String? = nil,
                 swapCommit: String? = nil,
@@ -6529,7 +6488,7 @@ public extension Com.Atproto.Repo {
             @Indirect
             public var did: String
             @Indirect
-            public var didDoc: LexiconUnknownUnion
+            public var didDoc: [String: AnyCodable]
             @Indirect
             public var handle: String
             @Indirect
@@ -6537,7 +6496,7 @@ public extension Com.Atproto.Repo {
             public init(
                 collections: [String],
                 did: String,
-                didDoc: LexiconUnknownUnion,
+                didDoc: [String: AnyCodable],
                 handle: String,
                 handleIsCorrect: Bool
             ) {
@@ -6596,11 +6555,11 @@ public extension Com.Atproto.Repo {
             @Indirect
             public var uri: ATURI
             @Indirect
-            public var value: LexiconUnknownUnion
+            public var value: [String: AnyCodable]
             public init(
                 cid: String? = nil,
                 uri: ATURI,
-                value: LexiconUnknownUnion
+                value: [String: AnyCodable]
             ) {
                 self._cid = .wrapped(cid)
                 self._uri = .wrapped(uri)
@@ -6766,11 +6725,11 @@ public extension Com.Atproto.Repo.ListRecords {
         @Indirect
         public var uri: ATURI
         @Indirect
-        public var value: LexiconUnknownUnion
+        public var value: [String: AnyCodable]
         public init(
             cid: String,
             uri: ATURI,
-            value: LexiconUnknownUnion
+            value: [String: AnyCodable]
         ) {
             self._cid = .wrapped(cid)
             self._uri = .wrapped(uri)
@@ -6785,7 +6744,7 @@ public extension Com.Atproto.Repo {
             @Indirect
             public var collection: String
             @Indirect
-            public var record: LexiconUnknownUnion
+            public var record: [String: AnyCodable]
             @Indirect
             public var repo: String
             @Indirect
@@ -6798,7 +6757,7 @@ public extension Com.Atproto.Repo {
             public var validate: Bool?
             public init(
                 collection: String,
-                record: LexiconUnknownUnion,
+                record: [String: AnyCodable],
                 repo: String,
                 rkey: String,
                 swapCommit: String? = nil,
@@ -6973,7 +6932,7 @@ public extension Com.Atproto.Server {
             @Indirect
             public var password: String?
             @Indirect
-            public var plcOp: LexiconUnknownUnion?
+            public var plcOp: [String: AnyCodable]?
             @Indirect
             public var recoveryKey: String?
             @Indirect
@@ -6986,7 +6945,7 @@ public extension Com.Atproto.Server {
                 handle: String,
                 inviteCode: String? = nil,
                 password: String? = nil,
-                plcOp: LexiconUnknownUnion? = nil,
+                plcOp: [String: AnyCodable]? = nil,
                 recoveryKey: String? = nil,
                 verificationCode: String? = nil,
                 verificationPhone: String? = nil
@@ -7008,7 +6967,7 @@ public extension Com.Atproto.Server {
             @Indirect
             public var did: String
             @Indirect
-            public var didDoc: LexiconUnknownUnion?
+            public var didDoc: [String: AnyCodable]?
             @Indirect
             public var handle: String
             @Indirect
@@ -7016,7 +6975,7 @@ public extension Com.Atproto.Server {
             public init(
                 accessJwt: String,
                 did: String,
-                didDoc: LexiconUnknownUnion? = nil,
+                didDoc: [String: AnyCodable]? = nil,
                 handle: String,
                 refreshJwt: String
             ) {
@@ -7202,7 +7161,7 @@ public extension Com.Atproto.Server {
             @Indirect
             public var did: String
             @Indirect
-            public var didDoc: LexiconUnknownUnion?
+            public var didDoc: [String: AnyCodable]?
             @Indirect
             public var email: String?
             @Indirect
@@ -7219,7 +7178,7 @@ public extension Com.Atproto.Server {
                 accessJwt: String,
                 active: Bool? = nil,
                 did: String,
-                didDoc: LexiconUnknownUnion? = nil,
+                didDoc: [String: AnyCodable]? = nil,
                 email: String? = nil,
                 emailAuthFactor: Bool? = nil,
                 emailConfirmed: Bool? = nil,
@@ -7515,7 +7474,7 @@ public extension Com.Atproto.Server {
             @Indirect
             public var did: String
             @Indirect
-            public var didDoc: LexiconUnknownUnion?
+            public var didDoc: [String: AnyCodable]?
             @Indirect
             public var email: String?
             @Indirect
@@ -7529,7 +7488,7 @@ public extension Com.Atproto.Server {
             public init(
                 active: Bool? = nil,
                 did: String,
-                didDoc: LexiconUnknownUnion? = nil,
+                didDoc: [String: AnyCodable]? = nil,
                 email: String? = nil,
                 emailAuthFactor: Bool? = nil,
                 emailConfirmed: Bool? = nil,
@@ -7605,7 +7564,7 @@ public extension Com.Atproto.Server {
             @Indirect
             public var did: String
             @Indirect
-            public var didDoc: LexiconUnknownUnion?
+            public var didDoc: [String: AnyCodable]?
             @Indirect
             public var handle: String
             @Indirect
@@ -7616,7 +7575,7 @@ public extension Com.Atproto.Server {
                 accessJwt: String,
                 active: Bool? = nil,
                 did: String,
-                didDoc: LexiconUnknownUnion? = nil,
+                didDoc: [String: AnyCodable]? = nil,
                 handle: String,
                 refreshJwt: String,
                 status: String? = nil
@@ -9096,7 +9055,7 @@ public extension Tools.Ozone.Moderation.Defs {
         @Indirect
         public var uri: ATURI
         @Indirect
-        public var value: LexiconUnknownUnion
+        public var value: [String: AnyCodable]
         public init(
             blobCids: [String],
             cid: String,
@@ -9104,7 +9063,7 @@ public extension Tools.Ozone.Moderation.Defs {
             moderation: Tools.Ozone.Moderation.Defs.Moderation,
             repo: Tools.Ozone.Moderation.Defs.RepoView,
             uri: ATURI,
-            value: LexiconUnknownUnion
+            value: [String: AnyCodable]
         ) {
             self._blobCids = .wrapped(blobCids)
             self._cid = .wrapped(cid)
@@ -9134,7 +9093,7 @@ public extension Tools.Ozone.Moderation.Defs {
         @Indirect
         public var uri: ATURI
         @Indirect
-        public var value: LexiconUnknownUnion
+        public var value: [String: AnyCodable]
         public init(
             blobs: [Tools.Ozone.Moderation.Defs.BlobView],
             cid: String,
@@ -9143,7 +9102,7 @@ public extension Tools.Ozone.Moderation.Defs {
             moderation: Tools.Ozone.Moderation.Defs.ModerationDetail,
             repo: Tools.Ozone.Moderation.Defs.RepoView,
             uri: ATURI,
-            value: LexiconUnknownUnion
+            value: [String: AnyCodable]
         ) {
             self._blobs = .wrapped(blobs)
             self._cid = .wrapped(cid)
@@ -9190,7 +9149,7 @@ public extension Tools.Ozone.Moderation.Defs {
         @Indirect
         public var moderation: Tools.Ozone.Moderation.Defs.Moderation
         @Indirect
-        public var relatedRecords: [LexiconUnknownUnion]
+        public var relatedRecords: [[String: AnyCodable]]
         public init(
             deactivatedAt: Date? = nil,
             did: String,
@@ -9201,7 +9160,7 @@ public extension Tools.Ozone.Moderation.Defs {
             invitedBy: Com.Atproto.Server.Defs.InviteCode? = nil,
             invitesDisabled: Bool? = nil,
             moderation: Tools.Ozone.Moderation.Defs.Moderation,
-            relatedRecords: [LexiconUnknownUnion]
+            relatedRecords: [[String: AnyCodable]]
         ) {
             self._deactivatedAt = .wrapped(deactivatedAt)
             self._did = .wrapped(did)
@@ -9244,7 +9203,7 @@ public extension Tools.Ozone.Moderation.Defs {
         @Indirect
         public var moderation: Tools.Ozone.Moderation.Defs.ModerationDetail
         @Indirect
-        public var relatedRecords: [LexiconUnknownUnion]
+        public var relatedRecords: [[String: AnyCodable]]
         public init(
             deactivatedAt: Date? = nil,
             did: String,
@@ -9258,7 +9217,7 @@ public extension Tools.Ozone.Moderation.Defs {
             invitesDisabled: Bool? = nil,
             labels: [Com.Atproto.Label.Defs.Label]? = nil,
             moderation: Tools.Ozone.Moderation.Defs.ModerationDetail,
-            relatedRecords: [LexiconUnknownUnion]
+            relatedRecords: [[String: AnyCodable]]
         ) {
             self._deactivatedAt = .wrapped(deactivatedAt)
             self._did = .wrapped(did)
